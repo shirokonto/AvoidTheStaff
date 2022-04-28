@@ -5,14 +5,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float speed;
-    private float angle;
-
-    private Animator animator;
+    private float _angle;
+    private Animator _animator;
     private static readonly int Move = Animator.StringToHash("Move");
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,19 +25,14 @@ public class PlayerController : MonoBehaviour
     {
         float moveVertical = Input.GetAxis("Vertical");
         transform.position += moveVertical * speed * transform.forward;
-        animator.SetFloat(Move, moveVertical);
+        _animator.SetFloat(Move, moveVertical);
     }
 
     private void UpdateRotation()
     {
         float rotate = Input.GetAxis("Horizontal");
-        angle += rotate * 0.025f;
-        Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
+        _angle += rotate * 0.025f;
+        Vector3 targetDirection = new Vector3(Mathf.Sin(_angle), 0f, Mathf.Cos(_angle));
         transform.rotation = Quaternion.LookRotation(targetDirection);
-    }
-
-    private void ShowCollectedGemsText()
-    {
-        
     }
 }
