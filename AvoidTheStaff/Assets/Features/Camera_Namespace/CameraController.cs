@@ -1,21 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+namespace Features.Camera_Namespace
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Vector3 offset;
+    public class CameraController : MonoBehaviour
+    {
+        [SerializeField] private Transform target;
+        [SerializeField] private Vector3 offset;
+        [SerializeField] private float interpolationRatio;
+        [SerializeField] private float rotationX;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = target.position + ((Quaternion.Slerp(target.rotation, transform.rotation,2))* offset);
-        transform.rotation = target.rotation * Quaternion.Euler(20, 0, 0);
+        // Update is called once per frame
+        void Update()
+        {
+            //Delayed panning of camera using Slerp
+            transform.position = target.position + ((Quaternion.Slerp(target.rotation, transform.rotation,interpolationRatio))* offset);
+            //rotation around x axis
+            transform.rotation = target.rotation * Quaternion.Euler(rotationX, 0, 0);
+        }
     }
 }
