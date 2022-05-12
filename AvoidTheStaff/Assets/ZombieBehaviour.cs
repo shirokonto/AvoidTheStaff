@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ZombieBehaviour : MonoBehaviour
 {
-        public float attackSpeed = 4;
-        public float attackDistance;
-        [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private float speed;
         private CharacterController _controller;
         private Animator _animator;
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
@@ -21,23 +20,17 @@ public class ZombieBehaviour : MonoBehaviour
         void Update()
         {
             UpdateMovement();
-            UpdateRotation();
+            UpdateMovement();
         }
 
         private void UpdateMovement()
         {
             Vector3 direction = playerTransform.position - transform.position;
-
             direction = direction.normalized;
 
-            Vector3 velocity = direction * attackSpeed;
-            _animator.SetFloat(MoveSpeed, attackSpeed);
+            Vector3 velocity = direction * speed;
+            _animator.SetFloat(MoveSpeed, speed);
 
             _controller.Move(velocity * Time.deltaTime);
-        }
-
-        private void UpdateRotation()
-        {
-            
         }
 }

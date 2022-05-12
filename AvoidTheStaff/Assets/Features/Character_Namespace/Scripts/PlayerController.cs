@@ -1,13 +1,12 @@
-using DataStructures.Variables;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float speed;
-    private float _angle;
     private Animator _animator;
     private static readonly int Move = Animator.StringToHash("Move");
+    private float _angle;
 
     void Awake()
     {
@@ -23,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMovement()
     {
+        //Move forward
         float moveVertical = Input.GetAxis("Vertical");
         transform.position += moveVertical * speed * transform.forward;
         _animator.SetFloat(Move, moveVertical);
