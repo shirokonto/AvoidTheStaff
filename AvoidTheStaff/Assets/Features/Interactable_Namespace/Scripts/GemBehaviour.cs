@@ -7,6 +7,7 @@ public class GemBehaviour : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private Vector3 rotationAngle;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private GameObject vfx;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class GemBehaviour : MonoBehaviour
         {
             var gemCollector = player.GetComponent<GemCollector>();
             gemCollector.AddGem();
+            Destroy(vfx);
             Destroy(gameObject);
         }
     }
