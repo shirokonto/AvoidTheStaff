@@ -17609,7 +17609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15844d756308a841a003d780dad8be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableGem: {fileID: 4563892338713779953, guid: 3913cdc0b3a62e945a9c14d19d323b21, type: 3}
+  collectableGem: {fileID: 8742290069863575789, guid: a81469a7028f50a4e8dd035e23db1a33, type: 3}
   numberOfGems: 10
 --- !u!4 &1458868025
 Transform:
