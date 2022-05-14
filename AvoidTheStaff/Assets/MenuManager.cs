@@ -37,6 +37,7 @@ public class MenuManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Playground", LoadSceneMode.Additive);
         Time.timeScale = 1;
     }
     
